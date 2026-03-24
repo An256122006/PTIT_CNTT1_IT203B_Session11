@@ -1,0 +1,14 @@
+Phan 1 - Phan tich: Tai sao "if" la chua du?
+Trong JDBC, ResultSet giong nhu mot cai bang du lieu ao. De doc duoc du lieu, Java su dung mot con tro
+ (cursor).
+
+Co che cua next(): Mac dinh khi moi tao ra, con tro nam o truoc dong dau tien. Moi khi ban goi next(),
+ con tro se di chuyen xuong 1 dong. Neu co du lieu, no tra ve true, neu het du lieu no tra ve false.
+
+Tai sao dung "if" bi loi: Cau lenh if (rs.next()) chi kiem tra va di chuyen con tro dung 1 lan. Do
+do, no chi doc duoc dong dau tien roi dung lai. Neu ban muon in toan bo danh sach, ban phai bat con
+ tro di chuyen lien tuc cho den khi het bang.
+
+Loi khi bang trong: Neu bang khong co du lieu, rs.next() tra ve false. Neu ban co tinh truy xuat
+du lieu (rs.getString(...)) ma khong kiem tra next() truoc do, he thong se bao loi Invalid cursor
+state.

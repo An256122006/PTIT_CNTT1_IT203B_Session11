@@ -1,0 +1,17 @@
+Phần 1 - Phân tích: Tại sao việc không đóng kết nối lại nguy hiểm?
+Trong các hệ thống y tế hoạt động 24/7, việc quản lý kết nối không tốt giống như việc bạn mở vòi nước
+mà không bao giờ khóa lại.
+
+Cạn kiệt Connection Pool: Mỗi cơ sở dữ liệu (MySQL, SQL Server...) đều có một giới hạn tối đa
+số lượng kết nối đồng thời (ví dụ: max_connections trong MySQL mặc định thường là 151). Khi bạn
+khởi tạo liên tục mà không đóng, các kết nối cũ vẫn nằm ở trạng thái "Sleep" nhưng vẫn chiếm chỗ.
+Khi đạt ngưỡng giới hạn, hệ thống sẽ từ chối mọi yêu cầu mới, gây ra lỗi Communications link failure.
+
+Rò rỉ bộ nhớ (Memory Leak): Mỗi đối tượng Connection, Statement, và ResultSet đều chiếm dụng bộ
+nhớ RAM. Nếu không được giải phóng, RAM của máy chủ sẽ bị đầy dần, dẫn đến hiện tượng lag, treo
+máy (Not Responding) và cuối cùng là crash ứng dụng.
+
+Ảnh hưởng đến tính liên tục (High Availability): Trong y tế, dữ liệu bệnh án cần truy xuất tức
+thời. Nếu hệ thống treo đúng lúc cấp cứu, hậu quả sẽ rất nghiêm trọng. Việc đóng kết nối trong
+khối finally đảm bảo rằng dù truy vấn thành công hay thất bại, tài nguyên vẫn luôn được trả lại
+cho hệ thống.

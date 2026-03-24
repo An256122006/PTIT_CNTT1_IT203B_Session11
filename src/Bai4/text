@@ -1,0 +1,17 @@
+Phan 1 - Phan tich: Hiem hoa SQL Injection
+Khi ban dung code noi chuoi nhu sau:
+String sql = "SELECT * FROM patients WHERE name = '" + inputName + "'";
+
+1. Luong thuc thi khi bi tan cong:
+Gia su ke xau nhap vao o tim kiem chuoi: ' OR '1'='1
+Cau lenh SQL gui den database se tro thanh:
+SELECT * FROM patients WHERE name = '' OR '1'='1'
+
+2. Tai sao menh de WHERE luon dung?
+
+Trong SQL, phep toan OR se tra ve True neu mot trong hai ve dung.
+
+Ve thu hai '1'='1' la mot bieu thuc toan hoc luon luon dung.
+
+Ket qua: Database se bo qua dieu kien ve ten va tra ve toan bo du lieu trong
+bang patients. Day chinh la cach thong tin benh nhan bi ro ri.

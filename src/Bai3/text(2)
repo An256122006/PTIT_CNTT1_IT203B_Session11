@@ -1,0 +1,13 @@
+Phan 1 - Phan tich: Y nghia cua executeUpdate()
+Phuong thuc executeUpdate() la mot cong cu quan trong de kiem tra tinh thanh cong cua cau lenh SQL.
+
+Gia tri tra ve: executeUpdate() tra ve mot so nguyen (int). So nay dai dien cho so luong dong (rows)
+bi tac dong boi cau lenh SQL do.
+
+Neu tra ve 1, 2, 10... nghia la co chung do dong da duoc cap nhat thanh cong.
+
+Neu tra ve 0, nghia la khong co dong nao thoa man dieu kien WHERE. Trong truong hop cua ban,
+ Bed_999 khong ton tai nen ket qua tra ve se la 0.
+
+Cach phan hoi cho y ta: Chung ta se kiem tra bien int nay. Neu no bang 0, chung ta se in ra
+thong bao: "Loi: Ma giuong khong ton tai trong he thong!" thay vi de im lang nhu ma nguon cu.
